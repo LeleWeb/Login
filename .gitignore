@@ -1,0 +1,7 @@
+*.log
+*.lock
+tmp/*
+log/*
+*.swp
+config/database.yml
+.ruby-version

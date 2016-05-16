@@ -1,0 +1,8 @@
+defaults: &defaults
+  redis_url: "redis://localhost:6379"
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults

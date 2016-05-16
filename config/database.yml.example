@@ -1,0 +1,25 @@
+defaults: &defaults
+  adapter: postgis
+  #adapter: postgresql
+  postgis_extension: postgis
+  #注意: pbboucer 不支持 schema_search_path, 需要数据库配置
+  schema_search_path: '"$user", public, postgis'
+  encoding: utf8
+  pool: 80
+  timeout: 5000
+  allow_concurrency: false
+  host: localhost
+  port: 5433
+  username: guanyuanchao
+  password: guanyuanchao
+
+development:
+  <<: *defaults
+  database: cloud_development
+
+test:
+  <<: *defaults
+  database: cloud_test
+
+production:
+  <<: *defaults

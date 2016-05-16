@@ -1,0 +1,14 @@
+development:
+  #driver: 'hiredis'
+  host: 'localhost'
+  port: 6379
+
+test:
+  #driver: 'hiredis'
+  host: 'localhost'
+  port: 6379
+
+production:
+  #driver: 'hiredis'
+  host: 'localhost'
+  port: 6379
