@@ -1,4 +1,11 @@
 # -*- encoding: UTF-8 -*-
+##############################################################
+# File Name: models/base.rb
+# Author: zhouhuan
+# mail: towonzhou@gmail.com
+# Created Time: 2013年09月12日 星期四 09时48分20秒
+##############################################################
+
 #消息处理,1表示成功,2表示失败
 module Message
   RESULT= proc do |code, msg, hash = {}|

@@ -16,12 +16,10 @@ module AdapterModule
 
     def request_api(method, argv =[])
       argv = [argv] unless argv.is_a?(Array)
-      add_api_mertric(:call_total, "api-#{method_map[method].to_s}")
       begin
         res = request.send(method_map[method], *argv)
         logger.info("=====require method[DB]===#{method_map[method]}")
         logger.info("=====require res[DB]===#{res}")
-        add_api_mertric(:call_success, "api-#{method_map[method].to_s}")
         return format(method, res)
       rescue Exception => e
         logger.info("=====require method[DB]===#{method_map[method]}")

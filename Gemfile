@@ -1,34 +1,49 @@
+#source "https://rubygems.org"
 source "https://ruby.taobao.org"
+
 gem 'rack'
 gem 'sinatra'
+
 gem 'rake'
+gem 'zip'
+
 gem 'activerecord', '~> 3.2', :require => 'active_record'
 gem 'activesupport'
-gem "sinatra-activerecord"
-gem 'kgio'
-gem 'racksh'
-gem 'eventmachine'
-gem 'em-http-request'
+# need composite primary keys
+gem 'composite_primary_keys', '=5.0.13'
 
+gem "sinatra-activerecord"
 gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+
 
 gem 'redis'
 gem 'redis-namespace'
 gem "hiredis", "~> 0.4.5"
 gem 'dalli'
 gem 'second_level_cache'
+
+gem 'kgio'
+gem 'racksh'
+gem 'eventmachine'
+gem 'em-http-request'
+gem 'hessian2', '1.1.1'
+gem 'whenever', :require => false
+gem 'mail'
+gem 'savon'
 gem 'redis-objects'
-gem "nokogiri", ">= 1.6.7.rc"
 
 group :production do
   gem 'rainbows'
 end
+
 gem 'pry'
 group :development do
   gem 'thin'
   gem 'sinatra-contrib'
+  # gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 group :test do
