@@ -1,5 +1,6 @@
 # encoding: UTF-8
-
+require 'active_record'
+require "sinatra/activerecord"
 USE_MEM_CACHE = true
 
 
@@ -20,7 +21,7 @@ end
 
 APP_CONFIG_PATH  = ::File.expand_path("../config", __FILE__) + '/app_config.yml'
 APP_CONFIG = ::YAML.load_file(APP_CONFIG_PATH)[ENV["RACK_ENV"]] if File.exists?(APP_CONFIG_PATH)
-AUTOLOAD_PATHS = %w{config/initializers lib models controllers}
+AUTOLOAD_PATHS = %w{config/initializers lib models controllers db}
 
 
 require 'logger'
@@ -217,16 +218,7 @@ configure :development do
 end
 
 
-# initialize json
-# require 'oj'
-# require 'yajl'
-# require 'active_support'
-# ActiveSupport::JSON::Encoding.escape_html_entities_in_json = true
-
-
 # initialize ActiveRecord
-require 'active_record'
-require "sinatra/activerecord"
 ::ActiveRecord::Base.establish_connection ::YAML::load(::File.open("#{ENV['APP_ROOT']}/config/database.yml"))[ENV["RACK_ENV"]]
 ::ActiveRecord::Base.logger = $common_logger
 ::ActiveSupport.on_load(:active_record) do

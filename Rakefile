@@ -1,8 +1,6 @@
 require 'rake/testtask'
-require 'open-uri'
-require 'fileutils'
-require 'zip/zipfilesystem'
-require "sinatra/activerecord/rake"
+require 'sinatra/activerecord' #特别要注意这个，　不加的话无法执行rake命令
+require 'sinatra/activerecord/rake'
 require 'pry'
 
 task :environment do
@@ -20,7 +18,7 @@ end
 
 desc "List all routes for this application"
 task :routes do
-  puts `grep '^[get|post|put|delete].*do$' app/controllers/*.rb | sed 's/ do$//'`
+  puts `grep '^[get|post|put|delete].*do$' controllers/*.rb | sed 's/ do$//'`
 end
 
 task :default => ["test"]
