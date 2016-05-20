@@ -11,7 +11,6 @@ gem 'pg'
 gem 'rgeo'
 gem "sinatra-activerecord"
 gem 'activerecord', '~> 3.2', :require => 'active_record'
-gem 'activerecord-postgis-adapter'
 gem 'activesupport'
 # need composite primary keys
 gem 'composite_primary_keys', '=5.0.13'
