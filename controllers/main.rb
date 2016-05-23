@@ -38,21 +38,3 @@ Dir.glob("#{ENV['APP_ROOT']}/controllers/*_controller.rb") { |file|
     end
   end
 }
-
-Dir.glob("#{ENV['APP_ROOT']}/controllers/v1/*_controller.rb") { |file|
-  if /([\w_]*)_controller\.rb$/.match file
-    controller = $1
-    require file
-    controller_class = eval("V1::#{controller.camelize}Controller")
-    # next unless controller_class.superclass == Controller    #只支持直接继承
-
-    controller_class.get_get_methods.each do |action|
-      get "/v1/#{controller.camelize.downcase}/#{action.to_s}" do
-        controller_class.new(self).send(action,params)
-      end
-      post "/v1/#{controller.camelize.downcase}/#{action.to_s}" do
-        controller_class.new(self).send(action,params)
-      end
-    end
-  end
-}

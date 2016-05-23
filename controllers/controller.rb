@@ -4,7 +4,7 @@
 # post_methods :update, :delete
 # 来定义自己的路由，路由可以直接main.rb中生成
 # 简单模式，非REST
-
+require 'json'
 class Controller
   include CheckParams
   include ApiAuth

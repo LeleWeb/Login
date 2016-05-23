@@ -27,9 +27,10 @@ gem 'eventmachine'
 gem 'em-http-request'
 gem 'hessian2', '1.1.1'
 gem 'whenever', :require => false
-gem 'mail'
+# gem 'mail'
 gem 'savon'
 gem 'redis-objects'
+gem 'pony'
 
 group :production do
   gem 'rainbows'

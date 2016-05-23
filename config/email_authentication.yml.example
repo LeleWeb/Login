@@ -1,0 +1,15 @@
+defaults: &defaults
+  address: smtp.163.com
+  port: 25
+  username: ********@163.com
+  password: **************
+  domain: localhost.localdomain
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

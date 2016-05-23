@@ -21,7 +21,11 @@ end
 
 APP_CONFIG_PATH  = ::File.expand_path("../config", __FILE__) + '/app_config.yml'
 APP_CONFIG = ::YAML.load_file(APP_CONFIG_PATH)[ENV["RACK_ENV"]] if File.exists?(APP_CONFIG_PATH)
-AUTOLOAD_PATHS = %w{config/initializers lib models controllers db}
+
+EAMIL_CONFIT_PATH = ::File.expand_path("../config", __FILE__) + '/email_authentication.yml'
+EMAIL_CONFIG = ::YAML.load_file(EAMIL_CONFIT_PATH)[ENV["RACK_ENV"]] if File.exists?(EAMIL_CONFIT_PATH)
+
+AUTOLOAD_PATHS = %w{config/initializers lib models controllers}
 
 
 require 'logger'
