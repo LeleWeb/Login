@@ -1,0 +1,15 @@
+defaults: &defaults
+  address: smtp.163.com
+  port: 25
+  username: gych373027161@163.com
+  password: zhangyue@qq.com
+  domain: localhost.localdomain
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

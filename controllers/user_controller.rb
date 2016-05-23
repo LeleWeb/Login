@@ -23,7 +23,7 @@ class UserController < Controller
   # 忘记密码
   def forgot_password(params = {})
     begin
-      Email::BaseMail.send_email(to_user: params[:user], body: erb(:'email/forgot_password'))
+      Email::BaseMail.send_email(to_user: params[:email], body: erb(:'email/forgot_password'))
       return Message::RESULT.call("0000", "邮件发送成功")
     rescue Exception => e
       logger.info("====#{__method__} error==#{e.to_s}")
