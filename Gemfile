@@ -12,7 +12,6 @@ gem 'rgeo', '~> 0.5.3'
 gem "sinatra-activerecord"
 gem 'activerecord', '~> 3.2', :require => 'active_record'
 gem 'activesupport', '~> 3.2.22.2'
-# need composite primary keys
 gem 'composite_primary_keys', '=5.0.13'
 
 gem 'redis', '~> 3.3.0'
