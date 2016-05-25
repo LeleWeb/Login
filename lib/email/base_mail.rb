@@ -5,7 +5,7 @@ module Email
       def send_email(params = {})
         Pony.mail :to => params[:to_user],
           :from => EMAIL_CONFIG['username'].to_s,
-          :subject => 'Howdy, Partna!',
+          :subject => params[:subject],
           :via => :smtp,
         :via_options => {
           :address => EMAIL_CONFIG['address'],
