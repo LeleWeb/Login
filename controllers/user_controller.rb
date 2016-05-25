@@ -39,9 +39,12 @@ class UserController < Controller
       u.password = params[:pass_word]
       u.name = params[:name]
       u.description = params[:description]
-      u.save # u.errors[:eamil]
-      Email::BaseMail.send_email(to_user: params[:email], subject: "申请成功", body: erb(:'email/apply_success'))
-      return Message::RESULT.call("0000", "用户注册成功")
+      if u.save # u.errors[:eamil]
+        Email::BaseMail.send_email(to_user: params[:email], subject: "申请成功", body: erb(:'email/apply_success'))
+        return Message::RESULT.call("0000", "用户注册成功")
+      else
+        return Message::RESULT.call("1114", "用户注册失败", u.errors.to_json)
+      end
     rescue Exception => e
       logger.info("====#{__method__} error==#{e.to_s}")
       return Message::RESULT.call("1114", "用户注册异常")
@@ -54,7 +57,7 @@ class UserController < Controller
       user = User.find_user_by_conditions(email: params[:email])
       return Message::RESULT.call("9997", "此用户不存在") if user.blank?
       user.status = 1
-      user.save
+      return Message::RESULT.call("0000", "激活用户失败", user.errors.to_json) if !user.save
       return Message::RESULT.call("0000", "激活用户成功")
     rescue Exception => e
       logger.info("====#{__method__} error==#{e.to_s}")
@@ -68,7 +71,7 @@ class UserController < Controller
       user = User.find_user_by_conditions(email: params[:email])
       return Message::RESULT.call("9997", "此用户不存在") if user.blank?
       user.status = 0
-      user.save
+      return Message::RESULT.call("0000", "锁定用户成功", user.errors.to_json) if !user.save
       return Message::RESULT.call("0000", "锁定用户成功")
     rescue Exception => e
       logger.info("====#{__method__} error==#{e.to_s}")
